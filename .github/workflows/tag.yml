@@ -1,0 +1,14 @@
+---
+name: create_tag
+on:
+  push:
+  schedule:
+    - cron: '38 * * * *'
+jobs:
+  create_teg:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - run: ./create_tag.sh
