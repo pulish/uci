@@ -3,7 +3,7 @@ name: create_tag
 on:
   push:
   schedule:
-    - cron: '38 * * * *'
+    - cron: '38 6 * * *'
 jobs:
   create_teg:
     runs-on: ubuntu-latest
