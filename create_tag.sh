@@ -6,7 +6,7 @@ UBUNTU_VERSIONS="focal jammy"
 FORMATTED_BUILD_LIST=()
 TAGS=$(git tag)
 
-echo "INFO: Checking releases for the following ubuntu versions: ${UBUNTU_VERSION[*]}"
+echo "INFO: Checking releases for the following ubuntu versions: ${UBUNTU_VERSIONS[*]}"
 for UBUNTU_VERSION in ${UBUNTU_VERSIONS}; do
     echo "INFO: Fetching releases for ${UBUNTU_VERSION}"
     RELEASE_REPO="https://cloud-images.ubuntu.com/releases/$UBUNTU_VERSION/"
