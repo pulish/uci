@@ -8,11 +8,11 @@ TAGS=$(git tag)
 echo "INFO: Checking releases for the following ubuntu versions: ${UBUNTU_VERSIONS}"
 for UBUNTU_VERSION in ${UBUNTU_VERSIONS}; do
     echo "INFO: Fetching releases for ${UBUNTU_VERSION}"
-    RELEASE_REPO="https://cloud-images.ubuntu.com/releases/$UBUNTU_VERSION/"
-    BUILD_LIST=$(curl -s "$RELEASE_REPO" | grep 'href="release-' | sed 's/.*href="release-\([\.0-9]\{8,10\}\).*/\1/g' | sort -V)
+    RELEASE_REPO="https://cloud-images.ubuntu.com/releases/${UBUNTU_VERSION}/"
+    BUILD_LIST=$(curl -s "${RELEASE_REPO}" | grep 'href="release-' | sed 's/.*href="release-\([\.0-9]\{8,10\}\).*/\1/g' | sort -V)
 
     for BUILD in ${BUILD_LIST}; do
-        if ! echo "$BUILD" | grep -q '^[\.0-9]\{8,10\}$'; then
+        if ! echo "${BUILD}" | grep -q '^[\.0-9]\{8,10\}$'; then
             echo "ERROR: found invalid build: '${BUILD}' under url ${RELEASE_REPO}"
             exit 1
         fi
